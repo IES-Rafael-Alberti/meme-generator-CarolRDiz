@@ -22,7 +22,7 @@ if($data["success"]) {
     //iterates over memes array
     foreach($data["data"]["memes"] as $meme) {
         //show meme image
-        echo "<a href='altameme.php?id=$meme[id],boxes=$meme[$box_count]'><img width='50px' src='" . $meme["url"] . "'></a>";
+        echo "<a href='altameme.php?id=$meme[id]'><img width='50px' src='" . $meme["url"] . "'></a>";
     }
 }
 ?>

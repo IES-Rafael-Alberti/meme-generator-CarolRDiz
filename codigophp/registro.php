@@ -1,13 +1,5 @@
 <?php
 if(isset($_POST['name'])) {
-    //print_r($_FILES);
-    // Recorrer subida de archivos múltiple
-    // $fotos = $_FILES['fotos'];
-    // for($i=0; $i < sizeof($fotos["name"]); $i++) {
-    //     print_r($fotos["name"][$i] . " -> " . $fotos["tmp_name"][$i]);
-    //     print_r("<br>");
-    // }
-    // exit(0);
 
     require("conecta.php");
 
