@@ -19,7 +19,6 @@ if(isset($_POST['user'])) {
     if($stmt->rowCount() == 1) {
         session_start();
         $_SESSION["user"] = $user;
-        $_SESSION["id"] = $id;
         session_write_close();
         header("Location: index.php");
         exit(0);
