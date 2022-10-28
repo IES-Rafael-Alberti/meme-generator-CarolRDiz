@@ -1,3 +1,6 @@
+<?php session_start(); 
+require("conecta.php");?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -8,12 +11,6 @@
 </head>
 <body>
 <?php
-
-    //checks if requested from form
-    if(isset($_POST["name"])) {
-        $urlImg = $_POST["urlImg"];
-        exit(0);
-    }
 
     $id = $_POST["id"];
     $cajas =$_POST["cajas"];
@@ -56,15 +53,31 @@
     //decode response
     $data = json_decode($result, true);
 
+
     //if success show image
     if($data["success"]) {
-        $nameMeme = $_SESSION("user").date("dmyHis");
+        print($_SESSION["user"]);
+        $nameMeme = $_SESSION["user"].date("dmyHis").".jpeg";
         file_put_contents("memes/$nameMeme",file_get_contents($data["data"]["url"]));
         echo "<img src='" . $data["data"]["url"] . "'>";
-        header("Location: index.php");
+        
+        // prepara la sentencia SQL. Le doy un nombre a cada dato del formulario 
+        $sql = "INSERT INTO created_memes (name,route,id_user) values (:name,:route,:id_user)";
+        // asocia valores a esos nombres
+        $datos = array("name" => $nameMeme,
+                    "route"=>"memes/$nameMeme",
+                    "id_user"=>$_SESSION["id"]
+                    );
+        // comprueba que la sentencia SQL preparada está bien 
+        $stmt = $conn->prepare($sql);
+        // ejecuta la sentencia usando los valores
+        if($stmt->execute($datos) != 1) {
+            print("No se pudo dar de alta");
+            exit(0);
+        }
     }
     ?>
 </body>
-    
+    <a href="index.php">Volver a inicio</a>
 </body>
 </html>

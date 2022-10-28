@@ -1,7 +1,8 @@
 <?php
+session_start();
 if(isset($_POST['user'])) {
    require("conecta.php");
-
+   
     // recupera los datos del formulario
     $user = $_POST["user"];
     $pwd = $_POST["pwd"];
@@ -17,8 +18,11 @@ if(isset($_POST['user'])) {
     // ejecuta la sentencia usando los valores
     $stmt->execute($datos);
     if($stmt->rowCount() == 1) {
-        session_start();
+        $idUser = $conn->query("Select id FROM users WHERE name = '$user' AND pwd = '$pwd'");
+        $idFetch = $idUser->fetchObject();
+        $id = $idFetch->id;
         $_SESSION["user"] = $user;
+        $_SESSION["id"] = $id;
         session_write_close();
         header("Location: index.php");
         exit(0);

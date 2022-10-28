@@ -27,7 +27,7 @@ require("conecta.php");
         while($meme = $memes->fetchObject()){
             print("<tr>");
             print("<td>");
-            print("<a href='borrarmeme.php?id=".$meme->id."'><i class='fa-solid fa-trash-can'></i>");
+            print("<a href='borrarmeme.php?ruta=".$meme->route."'><i class='fa-solid fa-trash-can'></i>");
             print("</td>");
             print("<td>");
             print($meme->name);
@@ -37,7 +37,7 @@ require("conecta.php");
         print("</table>");
     }
 
-?>
+?>  <a href='listadomemes.php'>Crear un meme</a>
     <a href="phpinfo.php">phpinfo()</a>
     <a href="xdebug_info.php">xdebug_info()</a>
 </body>
