@@ -7,16 +7,17 @@ require("conecta.php");?>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="estilos/estilos.css?v=<?php echo(rand()); ?>"/>
     <title>Imagen modificada</title>
 </head>
-<body>
 <?php
 
     $id = $_POST["id"];
     $cajas =$_POST["cajas"];
     $arrayCajas = array();
+    $color = $_POST["color"];
     for ($i = 1; $i <= $cajas; $i++) {
-        array_push($arrayCajas, array("text" => $_POST["caja$i"], "color" => "#000000"));
+        array_push($arrayCajas, array("text" => $_POST["caja$i"], "color" => $color));
     }
 
     //url for meme creation
@@ -56,10 +57,9 @@ require("conecta.php");?>
 
     //if success show image
     if($data["success"]) {
-        print($_SESSION["user"]);
         $nameMeme = $_SESSION["user"].date("dmyHis").".jpeg";
         file_put_contents("memes/$nameMeme",file_get_contents($data["data"]["url"]));
-        echo "<img src='" . $data["data"]["url"] . "'>";
+        
         
         // prepara la sentencia SQL. Le doy un nombre a cada dato del formulario 
         $sql = "INSERT INTO created_memes (name,route,id_user) values (:name,:route,:id_user)";
@@ -77,6 +77,7 @@ require("conecta.php");?>
     }
     ?>
 </body>
+    <?php echo "<img src='" . $data["data"]["url"] . "'>";?>
     <a href="index.php">Volver a inicio</a>
 </body>
 </html>
