@@ -15,9 +15,9 @@ require("conecta.php");?>
     $id = $_POST["id"];
     $cajas =$_POST["cajas"];
     $arrayCajas = array();
-    $color = $_POST["color"];
+
     for ($i = 1; $i <= $cajas; $i++) {
-        array_push($arrayCajas, array("text" => $_POST["caja$i"], "color" => $color));
+        array_push($arrayCajas, array("text" => $_POST["caja$i"], "color" =>$_POST["color$i"]));
     }
 
     //url for meme creation

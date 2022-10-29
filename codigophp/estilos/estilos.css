@@ -51,6 +51,7 @@ article{
     border-radius:1em;
     text-decoration: none;
     margin:1%;
+    display:block;
 }
 .boton:hover{
     background-color:rgb(71, 251, 71);

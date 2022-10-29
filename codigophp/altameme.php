@@ -19,10 +19,12 @@ $cajas = $_GET["cajas"];
     <input type="hidden" name="id" value=<?php echo "$id";?>>
     <input type="hidden" name="url" value=<?php echo "$url";?>>
     <input type="hidden" name="cajas" value=<?php echo "$cajas";?>>
-    <input type="text" name="color" value="#000000">
     <?php
         for ($i = 1; $i <= $cajas; $i++) {
+            echo "<label for='caja$i'>Texto$i: </label>";
             echo "<input type='text' name='caja$i' id='caja$i' value='Texto $i'>";
+            echo "<label for='color$i'>Color$i: </label>";
+            echo "<input type='color' name='color$i' id='color$i' value='Color $i'>";
         }
     ?>
     <input type="submit" class='boton' value="Crear meme" action="meme.php">
