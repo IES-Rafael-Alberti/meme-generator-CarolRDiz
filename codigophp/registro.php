@@ -4,27 +4,26 @@ if(isset($_POST['name'])) {
     require("conecta.php");
 
     // recupera los datos del formulario
-    $nombre = $_POST["name"];
+    $name = $_POST["name"];
+    $pwd = $_POST["pwd"];
     //$sql = "INSERT INTO usuario (nombre, edad, foto) values ('$nombre', $edad, '$foto')";
     
     // prepara la sentencia SQL. Le doy un nombre a cada dato del formulario 
-    $sql = "INSERT INTO usuario (name) values (:name)";
+    $sql = "INSERT INTO users (name,pwd) values (:name,:pwd)";
     // asocia valores a esos nombres
-    $datos = array("name" => $name
+    $datos = array("name" => $name,
+                    "pwd" => $pwd
                   );
     // comprueba que la sentencia SQL preparada está bien 
     $stmt = $conn->prepare($sql);
     // ejecuta la sentencia usando los valores
     if($stmt->execute($datos) != 1) {
         print("No se pudo dar de alta");
-        exit(0);
+    }
+    else{
+        header("Location: login.php");
     }
     
-    //print_r($_POST);
-    //print_r($_FILES);
-    //file_put_contents("fotos/perroooo", file_get_contents($_FILES["foto"]["tmp_name"]));
-    
-    exit(0);
 }
 ?>
 
@@ -34,12 +33,15 @@ if(isset($_POST['name'])) {
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Registro</title>
 </head>
 <body>
+    <h1>Registrarse</h1>
 <form action="" method="post" enctype="multipart/form-data">
     <label for="name">Nombre: </label>
     <input type="text" name="name" id="name">
+    <label for="pwd">Nombre: </label>
+    <input type="password" name="pwd" id="pwd">
     <input type="submit" value="Enviar">
 </form>    
 </body>

@@ -16,7 +16,7 @@ require("conecta.php");?>
     $cajas =$_POST["cajas"];
     $arrayCajas = array();
     for ($i = 1; $i <= $cajas; $i++) {
-        array_push($arrayCajas, array("text" => $_POST["caja$i"], "color" => "#D6FFF6"));
+        array_push($arrayCajas, array("text" => $_POST["caja$i"], "color" => "#000000"));
     }
 
     //url for meme creation
@@ -72,8 +72,7 @@ require("conecta.php");?>
         $stmt = $conn->prepare($sql);
         // ejecuta la sentencia usando los valores
         if($stmt->execute($datos) != 1) {
-            print("No se pudo dar de alta");
-            exit(0);
+            print("No se pudo añadir el meme a la base de datos");         
         }
     }
     ?>

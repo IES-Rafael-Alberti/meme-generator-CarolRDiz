@@ -41,12 +41,14 @@ if(isset($_POST['user'])) {
     <title>Protectora de animales RAfaNO - Login</title>
 </head>
 <body>
+    <h1>Iniciar sesión</h1>
 <form action="" method="post" enctype="multipart/form-data">
     <label for="user">user: </label>
     <input type="text" name="user" id="user">
     <label for="pwd">pwd: </label>
     <input type="password" name="pwd" id="pwd">
     <input type="submit" value="Login">
-</form>    
+</form>
+<a href='registro.php'>Registrarse</a>
 </body>
 </html>
