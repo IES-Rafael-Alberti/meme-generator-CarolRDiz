@@ -41,9 +41,8 @@ require("conecta.php");
         }
         print("</section>");
     }
-
-?>  <a class="boton" href='listadomemes.php'>Crear un meme</a>
-    
+?>  
+    <a class="boton" href='listadomemes.php'>Crear un meme</a>
     <main>
     <footer>
         <a href="phpinfo.php">phpinfo()</a>
