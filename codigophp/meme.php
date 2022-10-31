@@ -60,7 +60,6 @@ require("conecta.php");?>
         $nameMeme = $_SESSION["user"].date("dmyHis").".jpeg";
         file_put_contents("memes/$nameMeme",file_get_contents($data["data"]["url"]));
         
-        
         // prepara la sentencia SQL. Le doy un nombre a cada dato del formulario 
         $sql = "INSERT INTO created_memes (name,route,id_user) values (:name,:route,:id_user)";
         // asocia valores a esos nombres

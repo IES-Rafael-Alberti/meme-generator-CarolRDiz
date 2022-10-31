@@ -30,7 +30,6 @@ require("conecta.php");
         print("<p>No tienes memes</p>");
     }
     else{
-        $memes = $conn->query("Select * FROM created_memes WHERE id_user = (SELECT id FROM users WHERE name = '$name')");
         print("<section class='memes'>");
         while($meme = $memes->fetchObject()){
             print("<article class='meme'>");

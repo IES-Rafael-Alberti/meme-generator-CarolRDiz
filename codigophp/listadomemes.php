@@ -27,12 +27,19 @@ $result = curl_exec($ch);
 //decode content (assoc array)
 $data = json_decode($result, true);
 
+print("<form id='filtrado'>
+    <input type='text' name='denominacion' placeholder='Two Buttons...'>
+</form>")
+
 //if success shows images
 if($data["success"]) {
     //iterates over memes array
     foreach($data["data"]["memes"] as $meme) {
         //show meme image
+        echo "<figure class='memelist'>";
         echo "<a href='altameme.php?id=$meme[id]&cajas=$meme[box_count]&url=$meme[url]'><img class='imglist' src='" . $meme["url"] . "'></a>";
+        echo "<figcaption>$meme[name]</figcaption>";
+        echo "</figure>";
     }
 }
 

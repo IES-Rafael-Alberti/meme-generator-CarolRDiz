@@ -71,3 +71,7 @@ footer{
     width:200px;
     margin: 5px;
 }
+
+.memelist{
+    display:inline-block;
+}
