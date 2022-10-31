@@ -27,9 +27,10 @@ $result = curl_exec($ch);
 //decode content (assoc array)
 $data = json_decode($result, true);
 
+/*
 print("<form id='filtrado'>
-    <input type='text' name='denominacion' placeholder='Two Buttons...'>
-</form>")
+    <input type='text' name='denominacion' placeholder='Buscar meme...'>
+</form>");*/
 
 //if success shows images
 if($data["success"]) {
